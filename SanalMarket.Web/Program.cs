@@ -13,12 +13,13 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
     options.UseSqlServer("Data Source=.; Initial Catalog=Northwind; Integrated Security=true;");
 });
 
-
 var app = builder.Build();
 
 //Configure
 //app.MapGet("/", () => "Hello World!");
 //app.MapGet("/hb", () => "<h1>Halk Bankası!<h1>");
+
+app.UseStaticFiles();
 
 app.MapDefaultControllerRoute();
 

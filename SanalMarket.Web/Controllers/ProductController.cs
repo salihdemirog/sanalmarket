@@ -16,7 +16,12 @@ namespace SanalMarket.Web.Controllers
         {
             var products = _productService.GetAll();
 
-            return Json(products);
+            var model = new ProductIndexViewModel
+            {
+                Products = products
+            };
+
+            return View(model);
         }
     }
 }

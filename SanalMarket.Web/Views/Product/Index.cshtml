@@ -1,0 +1,15 @@
+﻿@using SanalMarket.Web
+@model ProductIndexViewModel
+@{
+    Layout = "_Layout";
+}
+
+<ol>
+    @foreach (var product in Model.Products)
+    {
+        <li>
+            @product.Name
+        </li>
+    }
+</ol>
+
