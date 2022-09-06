@@ -10,4 +10,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SanalMarket.Infrastructure\SanalMarket.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
