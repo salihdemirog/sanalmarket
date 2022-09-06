@@ -1,0 +1,22 @@
+﻿@model List<string>
+
+@{
+    int sayi = Model.Count;
+}
+<html>
+<head>
+    <title>Hakkımızda</title>
+</head>
+<body>
+    <h3>Hakkımızda</h3>
+    <p>Ekip Üyeleri (@sayi)</p>
+    <ul>
+        @foreach (var uye in Model)
+        {
+           <li>
+               @uye
+           </li>
+        }
+    </ul>
+</body>
+</html>
