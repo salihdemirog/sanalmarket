@@ -1,15 +1,16 @@
-﻿@using SanalMarket.Web
-@model ProductIndexViewModel
+﻿@model ProductIndexViewModel
 @{
     Layout = "_Layout";
 }
-
-<ol>
+<h4 class="border-bottom pb-2">Ürünler</h4>
+<ul class="list-group">
     @foreach (var product in Model.Products)
     {
-        <li>
-            @product.Name
+        <li class="list-group-item">
+            <h6>@product.Name</h6>
+            <p>@product.QuantityPerUnit</p>
+            <span class="fs-6">@product.UnitPrice.ToString("c")</span>
         </li>
     }
-</ol>
+</ul>
 

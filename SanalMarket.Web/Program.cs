@@ -10,10 +10,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, EfProductService>();
 builder.Services.AddDbContext<NorthwindContext>(options =>
 {
-    options.UseSqlServer("Data Source=.; Initial Catalog=Northwind; Integrated Security=true;");
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindConnStr"));
 });
 
 var app = builder.Build();
+
+if (builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
+    app.UseDeveloperExceptionPage();
 
 //Configure
 //app.MapGet("/", () => "Hello World!");
