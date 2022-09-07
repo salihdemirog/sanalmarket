@@ -30,8 +30,13 @@ namespace SanalMarket.Web.Controllers
         {
             var model = new ProductIndexViewModel
             {
-                Products = _productService.Search(q)
+                Products = _productService.Search(q),
             };
+
+            ViewData["SearchExp"] = q;
+            //ViewBag.SearchExp = q;
+
+            //TempData["SearchExp"] = q;
 
             return View("Index", model);
         }

@@ -5,6 +5,11 @@
 <div class="list-group">
     @foreach (var category in Model.Categories)
     {
-        <a href="@Url.Action("Index","Product",new{categoryId=category.Id})" class="list-group-item list-group-item-action">@category.Name</a>
+        string activeCssClass = Model.ActiveCategoryId.HasValue && Model.ActiveCategoryId.Value == category.Id
+        ? "active" : "";
+
+        @*<a href="@Url.Action("Index","Product",new{categoryId=category.Id})" class="list-group-item list-group-item-action">@category.Name</a>*@
+        <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@category.Id"
+       class="list-group-item list-group-item-action @activeCssClass">@category.Name</a>
     }
 </div>

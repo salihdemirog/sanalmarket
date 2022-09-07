@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.Extensions.Primitives;
 using SanalMarket.Infrastructure.Abstract;
 
 namespace SanalMarket.Web.ViewComponents
@@ -18,9 +19,15 @@ namespace SanalMarket.Web.ViewComponents
         {
             var categories = await _categoryService.GetAllAsync();
 
+            int? activeCategoryId = null;
+            var hasQuery = HttpContext.Request.Query.TryGetValue("categoryId", out StringValues values);
+            if (hasQuery)
+                activeCategoryId = int.Parse(values);
+
             var model = new CategoryListViewModel
             {
-                Categories = categories
+                Categories = categories,
+                ActiveCategoryId = activeCategoryId
             };
 
             return View(model);

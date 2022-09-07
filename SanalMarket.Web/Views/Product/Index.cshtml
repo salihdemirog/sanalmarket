@@ -2,7 +2,14 @@
 @{
     Layout = "_Layout";
 }
-<h4 class="border-bottom pb-2">Ürünler</h4>
+<h4 class="border-bottom pb-2">
+    Ürünler
+
+    @if (ViewBag.SearchExp != null)
+    {
+        <small class="float-end fs-6"> '@ViewBag.SearchExp' ile (@Model.Products.Count()) kayıt bulundu</small>
+    }
+</h4>
 <ul class="list-group">
 
     @foreach (var product in Model.Products)
