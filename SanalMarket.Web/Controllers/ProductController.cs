@@ -12,9 +12,11 @@ namespace SanalMarket.Web.Controllers
             _productService = productService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? categoryId)
         {
-            var products = _productService.GetAll();
+            var products = categoryId.HasValue
+                ? _productService.GetListByCategory(categoryId.Value)
+                : _productService.GetAll();
 
             var model = new ProductIndexViewModel
             {
@@ -22,6 +24,16 @@ namespace SanalMarket.Web.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Search([FromQuery]string q)
+        {
+            var model = new ProductIndexViewModel
+            {
+                Products = _productService.Search(q)
+            };
+
+            return View("Index", model);
         }
     }
 }

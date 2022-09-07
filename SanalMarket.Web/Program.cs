@@ -3,13 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using SanalMarket.Infrastructure.Abstract;
 using SanalMarket.Infrastructure.Concrete;
 using SanalMarket.Infrastructure.Contexts;
-using SanalMarket.Web;
+using SanalMarket.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 //ConfigureServices
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, EfProductService>();
+builder.Services.AddScoped<ICategoryService, EfCategoryService>();
+
 builder.Services.AddDbContext<NorthwindContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindConnStr"));

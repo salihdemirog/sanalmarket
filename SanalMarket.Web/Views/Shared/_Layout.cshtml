@@ -39,9 +39,9 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
+                <form method="get" action="/product/search" class="d-flex" role="search">
+                    <input name="q" class="form-control me-2" type="search" placeholder="ürün ara..." aria-label="Search">
+                    <button class="btn btn-outline-light">Ara</button>
                 </form>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                Kategoriler
+                @await Component.InvokeAsync("CategoryList")
             </div>
             <div class="col-md-9">
                 <!--Render Start -->

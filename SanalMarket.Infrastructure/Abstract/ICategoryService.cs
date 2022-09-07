@@ -10,5 +10,6 @@ namespace SanalMarket.Infrastructure.Abstract
     public interface ICategoryService
     {
         IEnumerable<Category> GetAll();
+        Task<List<Category>> GetAllAsync();
     }
 }

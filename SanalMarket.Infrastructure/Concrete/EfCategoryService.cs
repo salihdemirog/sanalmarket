@@ -1,4 +1,5 @@
-﻿using SanalMarket.Infrastructure.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using SanalMarket.Infrastructure.Abstract;
 using SanalMarket.Infrastructure.Contexts;
 using SanalMarket.Infrastructure.Entities;
 using System;
@@ -21,6 +22,11 @@ namespace SanalMarket.Infrastructure.Concrete
         public IEnumerable<Category> GetAll()
         {
             return _context.Categories.ToList();
+        }
+
+        public Task<List<Category>> GetAllAsync()
+        {
+            return _context.Categories.ToListAsync();
         }
     }
 }

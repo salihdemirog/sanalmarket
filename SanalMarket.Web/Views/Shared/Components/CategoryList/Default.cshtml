@@ -1,0 +1,10 @@
+﻿@model CategoryListViewModel
+
+<h4 class="border-bottom pb-2">Kategoriler</h4>
+
+<div class="list-group">
+    @foreach (var category in Model.Categories)
+    {
+        <a href="@Url.Action("Index","Product",new{categoryId=category.Id})" class="list-group-item list-group-item-action">@category.Name</a>
+    }
+</div>
