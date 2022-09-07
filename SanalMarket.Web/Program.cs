@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using SanalMarket.Infrastructure.Abstract;
 using SanalMarket.Infrastructure.Concrete;
 using SanalMarket.Infrastructure.Contexts;
+using SanalMarket.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 //ConfigureServices
@@ -15,15 +17,15 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
 
 var app = builder.Build();
 
+//Configure
+
+app.UseLogMiddleware();
+
 if (builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
     app.UseDeveloperExceptionPage();
 
-//Configure
-//app.MapGet("/", () => "Hello World!");
-//app.MapGet("/hb", () => "<h1>Halk Bankası!<h1>");
-
 app.UseStaticFiles();
 
-app.MapDefaultControllerRoute();
+app.MapControllerRoute(name: "default", pattern: "{controller=Product}/{action=Index}");
 
 app.Run();

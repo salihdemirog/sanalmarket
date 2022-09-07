@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanalMarket.Web", "SanalMarket.Web\SanalMarket.Web.csproj", "{45A4E178-0A86-4FAE-945F-0CA85F47B198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanalMarket.Infrastructure", "SanalMarket.Infrastructure\SanalMarket.Infrastructure.csproj", "{BA035789-0E26-4898-9E74-8683DC5D3488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanalMarket.Infrastructure", "SanalMarket.Infrastructure\SanalMarket.Infrastructure.csproj", "{BA035789-0E26-4898-9E74-8683DC5D3488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
