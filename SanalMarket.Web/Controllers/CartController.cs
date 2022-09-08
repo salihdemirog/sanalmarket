@@ -30,7 +30,8 @@ namespace SanalMarket.Web.Controllers
             };
 
             _cartService.Add(cartItem);
-            return Content(" HalkBank ");
+
+            return ViewComponent("CartSummary");
         }
 
         public IActionResult RemoveFromCart(int productId)
