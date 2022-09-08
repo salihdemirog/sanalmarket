@@ -20,7 +20,7 @@ namespace SanalMarket.Web.Controllers
         public IActionResult AddToCart(int productId)
         {
             var product = _productService.GetById(productId);
-            if(product == null)
+            if (product == null)
                 return NotFound();
 
             var cartItem = new CartItem
@@ -28,9 +28,9 @@ namespace SanalMarket.Web.Controllers
                 Product = product,
                 Quantity = 1
             };
-           
+
             _cartService.Add(cartItem);
-            return RedirectToAction("Index", "Product");
+            return Content(" HalkBank ");
         }
 
         public IActionResult RemoveFromCart(int productId)

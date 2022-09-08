@@ -15,7 +15,7 @@
     @foreach (var product in Model.Products)
     {
         <li class="list-group-item">
-            <form method="post" asp-action="AddToCart" asp-controller="Cart">
+            <form method="post" data-ajax="true" data-ajax-update="#cart-summary" asp-action="AddToCart" asp-controller="Cart">
                 <input type="hidden" name="productId" value="@product.Id">
                 <button class="btn btn-sm btn-outline-primary float-end">Sepete Ekle</button>
             </form>
