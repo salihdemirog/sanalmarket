@@ -15,6 +15,10 @@
     @foreach (var product in Model.Products)
     {
         <li class="list-group-item">
+            <form method="post" asp-action="AddToCart" asp-controller="Cart">
+                <input type="hidden" name="productId" value="@product.Id">
+                <button class="btn btn-sm btn-outline-primary float-end">Sepete Ekle</button>
+            </form>
             <h6>@product.Name</h6>
             <p>@product.QuantityPerUnit</p>
             <span class="fs-6">@product.UnitPrice.ToString("c")</span>

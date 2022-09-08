@@ -22,6 +22,11 @@ namespace SanalMarket.Infrastructure.Concrete
             return _context.Products.ToList();
         }
 
+        public Product GetById(int id)
+        {
+            return _context.Products.SingleOrDefault(t => t.Id == id);
+        }
+
         public IEnumerable<Product> GetListByCategory(int categoryId)
         {
             return _context.Products.Where(t => t.CategoryId == categoryId).ToList();

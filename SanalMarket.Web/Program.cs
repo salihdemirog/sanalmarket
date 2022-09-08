@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SanalMarket.Infrastructure.Abstract;
 using SanalMarket.Infrastructure.Concrete;
 using SanalMarket.Infrastructure.Contexts;
+using SanalMarket.Web.CartManagement;
 using SanalMarket.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, EfProductService>();
 builder.Services.AddScoped<ICategoryService, EfCategoryService>();
+builder.Services.AddScoped<ICartService, SessionCartService>();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "HalkMarket.Session";
+});
 
 builder.Services.AddDbContext<NorthwindContext>(options =>
 {
@@ -27,6 +35,8 @@ if (builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
     app.UseDeveloperExceptionPage();
 
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.MapControllerRoute(name: "default", pattern: "{controller=Product}/{action=Index}");
 

@@ -9,6 +9,7 @@ namespace SanalMarket.Infrastructure.Abstract
 {
     public interface IProductService
     {
+        Product GetById(int id);
         IEnumerable<Product> GetAll();
         IEnumerable<Product> GetListByCategory(int categoryId);
         IEnumerable<Product> Search(string expression);
