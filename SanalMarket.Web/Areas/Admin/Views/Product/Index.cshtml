@@ -1,0 +1,40 @@
+﻿@model ProductIndexViewModel
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a asp-action="Insert" class="btn btn-sm btn-outline-secondary">
+            Yeni Ürün Ekle
+        </a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Açıklama</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.QuantityPerUnit</td>
+                <td>@product.UnitPrice.ToString("c")</td>
+                <td>@product.UnitsInStock</td>
+                <td class="text-end">
+                    <a asp-action="Update" asp-route-productId="@product.Id" class="btn btn-sm btn-outline-info">Güncelle</a>
+                    <a href="#" class="btn btn-sm btn-outline-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

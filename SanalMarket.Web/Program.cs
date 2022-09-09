@@ -47,7 +47,16 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapControllerRoute(name: "default", pattern: "{controller=Product}/{action=Index}");
+app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Product}/{action=Index}"
+          );
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Product}/{action=Index}"
+    );
 
 app.Run();

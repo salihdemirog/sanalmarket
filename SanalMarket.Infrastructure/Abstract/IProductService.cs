@@ -13,5 +13,8 @@ namespace SanalMarket.Infrastructure.Abstract
         IEnumerable<Product> GetAll();
         IEnumerable<Product> GetListByCategory(int categoryId);
         IEnumerable<Product> Search(string expression);
+        Product Insert(Product product);
+        void Update(Product product);
+        void Delete(int id);
     }
 }

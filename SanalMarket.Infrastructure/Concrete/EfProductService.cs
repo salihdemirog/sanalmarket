@@ -17,6 +17,15 @@ namespace SanalMarket.Infrastructure.Concrete
             _context = context;
         }
 
+        public void Delete(int id)
+        {
+            var product = GetById(id);
+
+            _context.Products.Remove(product);
+
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Product> GetAll()
         {
             return _context.Products.ToList();
@@ -32,9 +41,25 @@ namespace SanalMarket.Infrastructure.Concrete
             return _context.Products.Where(t => t.CategoryId == categoryId).ToList();
         }
 
+        public Product Insert(Product product)
+        {
+            _context.Products.Add(product);
+
+            _context.SaveChanges();
+
+            return product;
+        }
+
         public IEnumerable<Product> Search(string expression)
         {
             return _context.Products.Where(t => t.Name.Contains(expression)).ToList();
+        }
+
+        public void Update(Product product)
+        {
+            var entry = _context.Entry(product);
+            entry.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

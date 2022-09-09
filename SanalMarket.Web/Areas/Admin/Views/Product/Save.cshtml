@@ -1,0 +1,41 @@
+﻿@model ProductSaveViewModel
+
+@{
+    Layout = "_LayoutAdmin";
+
+    var categoryItems = new SelectList(Model.Categories, "Id", "Name");
+}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Ürün Kayıt</h1>
+</div>
+
+<form method="post" autocomplete="off">
+    <input asp-for="Product.Id" type="hidden" />
+    <div class="mb-3">
+        @*      <label for="name" class="form-label">Ürün Adı</label>
+        <input name="name" type="text" class="form-control" id="name" />*@
+        @*<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>*@
+
+        @Html.LabelFor(t=>t.Product.Name,"Ürün Adı")
+        @Html.TextBoxFor(t=>t.Product.Name,new{@class="form-control"})
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.CategoryId" class="form-label">Kategori</label>
+        <select asp-for="Product.CategoryId" asp-items="categoryItems" class="form-select" aria-label="Default select example">
+            <option selected>--Seçiniz--</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.UnitPrice" class="form-label">Fiyat</label>
+        <input asp-for="Product.UnitPrice" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.UnitsInStock" class="form-label">Stok Miktarı</label>
+        <input asp-for="Product.UnitsInStock" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.QuantityPerUnit" class="form-label">Açıklama</label>
+        <textarea asp-for="Product.QuantityPerUnit" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

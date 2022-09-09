@@ -36,7 +36,8 @@ namespace SanalMarket.Web.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Mail),
                 new Claim(ClaimTypes.Email, user.Mail),
-                new Claim(ClaimTypes.GivenName, $"{user.FirstName} {user.LastName}")
+                new Claim(ClaimTypes.GivenName, $"{user.FirstName} {user.LastName}"),
+                new Claim(ClaimTypes.Role, "admin"),
             };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
