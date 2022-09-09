@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, EfProductService>();
 builder.Services.AddScoped<ICategoryService, EfCategoryService>();
+builder.Services.AddScoped<IUserService, EfUserService>();
 builder.Services.AddScoped<ICartService, SessionCartService>();
 builder.Services.AddHttpContextAccessor();
 
