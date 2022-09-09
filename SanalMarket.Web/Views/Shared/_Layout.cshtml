@@ -24,7 +24,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Anasayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" asp-action="Login" asp-controller="Account">Login</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </nav>
-
+    @await Html.PartialAsync("_UserHeader")
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">

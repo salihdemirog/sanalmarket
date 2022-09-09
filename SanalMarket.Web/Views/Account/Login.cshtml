@@ -33,6 +33,14 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş Yap</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2012–2023</p>
         </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Message
+            </div>
+        }
+
     </main>
 
 
