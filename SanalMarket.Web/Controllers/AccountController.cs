@@ -8,5 +8,12 @@ namespace SanalMarket.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(string email, string password, bool remember)
+        {
+            return null;
+        }
     }
 }

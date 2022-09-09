@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using SanalMarket.Infrastructure.Abstract;
@@ -25,6 +26,12 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindConnStr"));
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+    {
+
+    });
+
 var app = builder.Build();
 
 //Configure
@@ -37,6 +44,8 @@ if (builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
 app.UseStaticFiles();
 
 app.UseSession();
+
+app.UseAuthentication();
 
 app.MapControllerRoute(name: "default", pattern: "{controller=Product}/{action=Index}");
 
