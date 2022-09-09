@@ -49,5 +49,12 @@ namespace SanalMarket.Web.Controllers
 
             return RedirectToAction("Index", "Product");
         }
+
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await HttpContext.SignOutAsync();
+
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

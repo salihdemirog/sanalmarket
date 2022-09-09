@@ -30,7 +30,7 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
-
+        options.Cookie.Name = "HalkMarket.Cookie";
     });
 
 var app = builder.Build();
